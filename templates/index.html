@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Property Listings</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .property { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+        .property img { max-width: 200px; display: block; }
+    </style>
+</head>
+<body>
+<h1>Property Listings</h1>
+<a href="{{ url_for('add_property') }}">Add Property</a>
+{% for property in properties %}
+<div class="property">
+    <h2>{{ property.title }} - ${{ property.price }}</h2>
+    <img src="{{ property.image_url }}" alt="Property image">
+    <p>{{ property.description }}</p>
+</div>
+{% else %}
+<p>No properties available.</p>
+{% endfor %}
+</body>
+</html>
